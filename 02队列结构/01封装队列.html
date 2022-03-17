@@ -41,6 +41,27 @@
     // 使用队列
     var queue = new Queue()
 
+    // 击鼓传花面试题
+    function passGame(nameList, num) {
+      var queue = new Queue()
+
+      for (var i = 0; i < nameList.length; i++) {
+        queue.enqueue(nameList[i])
+      }
+
+      while (queue.size > 1) {
+        for (var i = 0; i < num - 1; i++) {
+          queue.enqueue(queue.dequeue())
+        }
+        queue.dequeue()
+      }
+      alert(queue.size())
+      var endName = queue.front()
+      alert('最后的那个人:' + endName)
+
+      return nameList.indexOf(endName)
+    }
+
   </script>
 </body>
 
