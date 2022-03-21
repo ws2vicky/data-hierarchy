@@ -18,6 +18,26 @@
       }
       // 属性
       this.head = null
+      this.length = 0
+      // 1.追加方法
+      LinkedList.prototype.append + function (data) {
+        var newNode = new Node(data)
+        if (this.length === 0) {
+          this.head = newNod
+        } else {
+          // 找到最后一个节点
+          var current = this.head
+          while (current.next) {
+            current = current.next
+          }
+          current.next = newNod
+        }
+        this.length += 1
+      }
+      // 2.toString方法
+      LinkedList.prototype.toString = function () {
+        // 1.
+      }
     }
   </script>
 </body>
