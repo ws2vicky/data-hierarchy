@@ -36,7 +36,51 @@
       }
       // 2.toString方法
       LinkedList.prototype.toString = function () {
-        // 1.
+        // 1.定义变量
+        var current = this.head
+        var listString = ""
+        // 2.循环获取一个个节点
+        while (current) {
+          listString += current.data + ""
+          current = current.next
+        }
+        return listString
+      }
+      // 3.insert方法
+      LinkedList.prototype.insert = function (position, data) {
+        // 1.对position越界判断
+        if (position < 0 || position > this.length) return false
+        // 2.根据data创建newNode
+        var newNode = new Node(data)
+        // 3.判断插入的是否第一个
+        if (position === 0) {
+          newNode.next = this.head
+          this.head = newNode
+        } else {
+          var index = 0
+          var current = this.head
+          var previous = null
+          while (index++ < position) {
+            previous = current
+            current = current.next
+          }
+          newNode.next = current
+          previous.next = newNode
+        }
+        this.length += 1
+        return true
+      }
+      // 4.get
+      LinkedList.prototype.get = function () {
+        // 1.越界判断
+        if (position < 0 || position >= this.length) return null
+        // 获取对应的值
+        var current = this.head
+        var index = 0
+        while (index++ < position) {
+          current = current.next
+        }
+        return current.data
       }
     }
   </script>
