@@ -114,7 +114,7 @@
         return true
       }
       // 7 removeAt方法
-      LinkedList.prototype.removeAt = function () {
+      LinkedList.prototype.removeAt = function (position) {
         // 1.越界判断
         if (position < 0 || position >= this.length) return null
         // 2.判断是否删除的是第一个节点
@@ -135,6 +135,13 @@
         // 长度
         this.length -= 1
         return current.data
+      }
+      // 8 remove
+      LinkedList.prototype.remove = function (data) {
+        // 1 获取data在列表中的位置
+        var position = this.indexOf(data)
+        // 2 根据位置删除节点
+        return this.removeAt(position)
       }
 
     }
