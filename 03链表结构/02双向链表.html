@@ -103,6 +103,32 @@
         this.length += 1
         return true
       }
+      // 4 get方法
+      DoublyLinkedList.prototype.get = function (position) {
+        // 越界判断
+        if (position < 0 || position >= this.length) return null
+        // 2 获取元素
+        var current = this.head
+        var index = 0
+        while (index++ < position) {
+          current = current.next
+        }
+      }
+      // 5 indexOf
+      DoublyLinkedList.prototype.indexOf = function (data) {
+        // 1 定义变量
+        var index = 0
+        var current = this.head
+        // 2 查找和data相同的节点
+        while (current) {
+          if (current.data == data) {
+            return index
+          }
+          current = current.next
+          index += 1
+        }
+        return -1
+      }
     }
   </script>
 </body>
