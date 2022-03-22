@@ -71,7 +71,7 @@
         return true
       }
       // 4.get
-      LinkedList.prototype.get = function () {
+      LinkedList.prototype.get = function (position) {
         // 1.越界判断
         if (position < 0 || position >= this.length) return null
         // 获取对应的值
@@ -82,6 +82,40 @@
         }
         return current.data
       }
+      // 5.indexOf
+      LinkedList.prototype.indexOf = function (data) {
+        // 1定义变量
+        var current = this.head
+        var index = 0
+        // 2开始查找
+        while (current) {
+          if (current.data == data) {
+            return index
+          }
+          current = current.next
+          index += 1
+        }
+        // 3没有找到返回-1
+        return -1
+      }
+      // 6.update方法
+      LinkedList.prototype.update = function (position, newData) {
+        // 1.越界判断
+        if (position < 0 || position >= this.length) return false
+
+        // 2查找正确节点
+        var current = this.head
+        var index = 0
+        while (index++ < position) {
+          current = current.next
+        }
+        // 
+        current.data = newData
+        return true
+
+
+      }
+
     }
   </script>
 </body>
