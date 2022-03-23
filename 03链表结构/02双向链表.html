@@ -129,6 +129,64 @@
         }
         return -1
       }
+      // 6 update方法
+      DoublyLinkedList.prototype.update = function (position, newNode) {
+        // 1 越界代码
+        if (position < 0 || position >= this.length) return false
+        // 2 寻找正确节点
+        var current = current.next
+        var index = 0
+        while (index++ < position) {
+          current = current.next
+        }
+        // 3 修改找到节点的data信息
+        current.data = newNode
+        return true
+      }
+      // 7 removeAt方法
+      DoublyLinkedList.prototype.removeAt = function (position) {
+        // 1 越界判断
+        if (position < 0 || position >= this.length) return false
+        // 2 判断是否只有一个节点
+        var current = this.head
+        if (this.length == 1) {
+          this.head = null
+          this.tail = null
+        } else {
+          // 判断删除的是否第一个节点
+          if (this.length == 0) {
+            this.head.prev = null
+            this.head = this.head.next
+          } else if (position == this.length - 1) {
+            // 最后节点
+            current = this.tail
+            this.tail.prev.next = null
+            this.tail = this.tail.prev
+          } else {
+            var index = 0
+            // var current = this.head
+
+            while (index++ < position) {
+              current.next = current
+            }
+            current.prev.next = current.next
+            current.next.prev = current.prev
+
+          }
+        }
+        // 3 length-1
+        this.length -= 1
+        return current.data
+      }
+      // 8 remove方法
+      DoublyLinkedList.prototype.remove = function (data) {
+
+        var index = this.indexOf(data)
+
+        return this.removeAt(index)
+
+      }
+      // isEmpty       size       getHead     getTail
     }
   </script>
 </body>
